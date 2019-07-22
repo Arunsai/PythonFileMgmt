@@ -1,6 +1,6 @@
 from docx import Document
 
-document=Document()
+document=Document("My_WordDoc_1.docx")
 
 document.add_heading('The Python code created Document')
 
@@ -16,4 +16,4 @@ document.add_heading('This is also a level 2 heading',level=2)
 
 paragraph3 = document.add_paragraph('This is paragraph 3 which should be followed by a line break.. So assuming this appears in a new page. The  remaining part of the paragraph is from the famous Lorum Ipsum. Mattis aliquam faucibus purus in massa. Mi bibendum neque egestas congue quisque egestas diam in. Donec adipiscing tristique risus nec feugiat in. Nunc sed id semper risus. Sed viverra tellus in hac. Consequat ac felis donec et odio pellentesque diam volutpat. Non sodales neque sodales ut etiam. Vitae elementum curabitur vitae nunc sed velit. Quisque id diam vel quam elementum pulvinar etiam. Integer vitae justo eget magna fermentum iaculis eu. Risus quis varius quam quisque id diam. Egestas maecenas pharetra convallis posuere morbi leo urna molestie.')
 
-document.save('CodeOutputs\My_WordDoc_1.docx')
+document.save('CodeOutputs\My_WordDoc_2.docx')
