@@ -1,8 +1,17 @@
 import sys
 import csv
 
-txt=open("SalesJan2009.csv","r")
-print(txt.readline())
+with open('Sales.csv', newline='') as csvfile:
+    fields = ['Transaction_date', 'Product', 'Price', 'Payment_Type', 'Name', 'City', 'State', 'Country', 'Account_Created', 'Last_Login', 'Latitude', 'Longitude']
 
-for x in range(10):
-    print(txt.readline())
+    reader = csv.DictReader(csvfile,fieldnames=fields)
+    for row in reader:
+        print(row['City'], row['Country'])
+#        print(row)
+
+#    spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')    
+#    for row in spamreader:
+#        print(', '.join(row))
+        
+
+    
