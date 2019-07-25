@@ -9,18 +9,28 @@ paragraph = document.add_paragraph("This is a test and first paragraph created f
 
 document.add_heading('This is a level 2 heading',level=2)
 
-paragraph2 = document.add_paragraph('This is paragraph 2 and followed by sample test. Sit amet justo donec enim diam vulputate ut pharetra. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Elementum nibh tellus molestie nunc non blandit massa. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Enim tortor at auctor urna nunc id cursus. Neque convallis a cras semper auctor neque vitae tempus quam. Congue mauris rhoncus aenean vel. Est lorem ipsum dolor sit amet consectetur adipiscing. Mauris pharetra et ultrices neque ornare aenean. Proin fermentum leo vel orci porta.')
+paragraph2 = document.add_paragraph('This is paragraph 2 and followed by sample test. Sit amet justo donec enim diam vulputate ut pharetra. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Elementum nibh tellus molestie nunc non blandit massa. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Enim tortor at auctor urna nunc id cursus. Neque convallis a cras semper auctor neque vitae tempus quam. Congue mauris rhoncus aenean vel. Est lorem ipsum dolor sit amet consectetur adipiscing. Mauris pharetra et ultrices neque ornare aenean. Proin fermentum leo vel orci porta. \n\n\n')
 
-data_table = document.add_table(rows=2, cols=2)
-cell11 = data_table.cell(0,0)
-cell12 = data_table.cell(0,1)
-cell21 = data_table.cell(1,0)
-cell22 = data_table.cell(1,1)
+fields = ['Transaction_date', 'Product', 'Price', 'Payment_Type', 'Name', 'City', 'State', 'Country', 'Account_Created', 'Last_Login', 'Latitude', 'Longitude']
 
-cell11.text = "R1 C1"
-cell12.text = "R1 C2"
-cell21.text = "R2 C2"
-cell22.text = "R2 C2"
+data_table = document.add_table(rows=8, cols=2)
+data_table.style = 'LightShading-Accent1'
+
+reader = csv.DictReader(open('Sales.csv', newline=''),fieldnames=fields)
+#x=next(reader)
+row=data_table.add_row()
+heading_cells = data_table.rows[0].cells
+heading_cells[0].text ='City'
+heading_cells[1].text ='Country'
+
+for row in data_table.rows:
+    x=next(reader)
+    row.cells[0].text=x['City']
+    row.cells[1].text=x['Country']
+
+for row in data_table.rows:
+    for cell in row.cells:
+        print(cell.text)
 
 
 document.add_page_break()
