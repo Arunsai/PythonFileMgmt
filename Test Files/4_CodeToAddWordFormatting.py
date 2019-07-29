@@ -1,8 +1,15 @@
 from docx import Document
+from docx.enum.style import WD_STYLE_TYPE
 
-document=Document("My_WordDoc_1.docx")
+document=Document()
+styles = document.styles
 
-document.add_title('Zimbani Monthly sales report')
+paragraph_styles = [s for s in styles if s.type == WD_STYLE_TYPE.PARAGRAPH]
+
+for style in paragraph_styles:
+    print(style.name)
+
+document.add_heading('Zimbani Monthly sales report')
 
 paragraph = document.add_paragraph("This is a test and first paragraph created for this project. To ensure that there is enough content in this paragraph am adding the famous sample text next to it. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
 
